@@ -20,10 +20,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- ijabo Crop -->
   <link rel="stylesheet" href="/extra-assets/ijaboCropTool/ijaboCropTool.min.css">
   <!-- toastr CSS -->
-  <link rel="stylesheet" href="/backend/js/toastr/toastr.min.css">
+  <link rel="stylesheet" href="/backend/plugins/toastr/toastr.min.css">
   <!-- style CSS -->
   <link rel="stylesheet" href="/backend/dist/css/style.css">
-
+  @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -60,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ijabo Crop -->
 <script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
 <!-- toastr -->
-<script src="/backend/js/toastr/toastr.min.js"></script>
+<script src="/backend/plugins/toastr/toastr.min.js"></script>
 
 <script>
   if (navigator.userAgent.indexOf("Firefox") != -1) {
@@ -85,10 +85,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     } else {
       return false;
     }
-
   });
 </script>
 
+@livewireScripts
 @stack('scripts')
 
 </body>

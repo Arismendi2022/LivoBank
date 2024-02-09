@@ -8,11 +8,11 @@
   use Illuminate\Notifications\Notifiable;
   use Laravel\Sanctum\HasApiTokens;
 
-  class Admin extends Authenticatable
+  class Seller extends Authenticatable
   {
-    use HasApiTokens,HasFactory,Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
-    protected $guard = 'admin';
+    protected $guard = 'seller';
 
     /**
      * The attributes that are mass assignable.
@@ -20,13 +20,16 @@
      * @var array<int, string>
      */
     protected $fillable = [
-      'fulname',
+      'name',
       'username',
       'email',
       'password',
       'picture',
-      'status'
-
+      'address',
+      'phone',
+      'email_verified_at',
+      'status',
+      'loan_status'
     ];
 
     /**
@@ -46,16 +49,6 @@
      */
     protected $casts = [
       'email_verified_at' => 'datetime',
-      'password'          => 'hashed',
+      'password' => 'hashed',
     ];
-
-    public function getPictureAttribute($value){
-      if($value){
-        return asset('/images/users/admins/' . $value);
-      }else{
-        return asset('/images/users/user_female.jpg');
-      }
-    }
-
-
   }

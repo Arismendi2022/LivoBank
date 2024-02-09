@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('pageTitle')</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/backend/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
@@ -15,7 +17,9 @@
   <link rel="stylesheet" href="/backend/dist/css/adminlte.min.css">
   <!-- botstrap 5 css -->
   <link rel="stylesheet" href="/backend/assets/css/bootstrap.min.css">
+  @livewireStyles
 </head>
+
 <body class="hold-transition login-page">
 
 <div class="login-box">
@@ -41,7 +45,7 @@
     });
   }
 </script>
+@livewireScripts
 
 </body>
 </html>
-

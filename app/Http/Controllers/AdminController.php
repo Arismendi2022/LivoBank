@@ -14,7 +14,10 @@
 
   class AdminController extends Controller
   {
+    public $admin;
+
     public function loginHandler(Request $request){
+
       $fieldType = filter_var($request->login_id,FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
       if($fieldType == 'email'){
@@ -35,7 +38,9 @@
         ],[
           'login_id.required' => 'Se requiere correo o nombre de usuario.',
           'login_id.exists'   => 'El correo no existe en el sistema.',
-          'password.required' => 'Se requiere contraseña.'
+          'password.required' => 'Se requiere contraseña.',
+          'min'               => 'La contraseña debe tener al menos 5 caracteres.',
+          'max'               => 'La contraseña no debe exceder más de 45 caracteres.'
 
         ]);
       }
@@ -49,6 +54,7 @@
         session()->flash('fail','Credenciales incorrectas');
         return redirect()->route('admin.login');
       }
+
     }
 
     public function logoutHandler(Request $request){
@@ -84,7 +90,7 @@
           'guard' => constGuards::ADMIN])
           ->update([
             'token'      => $token,
-            'created_at' => $now = DB::raw('GETDATE()')
+            'created_at' => Carbon::now()
           ]);
 
       }else{
@@ -93,7 +99,7 @@
           'email'      => $request->email,
           'guard'      => constGuards::ADMIN,
           'token'      => $token,
-          'created_at' => $now = DB::raw('GETDATE()')
+          'created_at' => Carbon::now()
         ]);
       }
 
@@ -132,8 +138,8 @@
 
       if($check_token){
         /** Check if token is not expire */
-        //$diffMins = Carbon::createFromFormat('Y-m-d H:i:s',$check_token->created_at)->diffInMinutes(Carbon::now());
-        $diffMins = DB::select("SELECT DATEDIFF(MINUTE, GETDATE(), ?) AS diffMins",[$check_token->created_at])[0]->diffMins;
+        $diffMins = Carbon::createFromFormat('Y-m-d H:i:s',$check_token->created_at)->diffInMinutes(Carbon::now());
+        //$diffMins = DB::select("SELECT DATEDIFF(MINUTE, GETDATE(), ?) AS diffMins",[$check_token->created_at])[0]->diffMins;
 
         //d($diffMins);
 
@@ -157,7 +163,7 @@
         /*'new_password'              => 'required|min:5|max:45|required_with:new_password_confirmation|same:new_password_confirmation',
         'new_password_confirmation' => 'required'*/
 
-        'new_password' => 'required|min:5|max:20',
+        'new_password'              => 'required|min:5|max:20',
         'new_password_confirmation' => 'required|same:new_password',
       ],[
         'required' => 'Se requiere nueva contraseña.',
@@ -206,8 +212,11 @@
     }
 
     public function profileView(Request $request){
-
-    	// code...
+      $admin = null;
+      if(Auth::guard('admin')->check()){
+        $admin = Admin::findOrFail(auth()->id());
+      };
+      return view('backend.pages.admin.profile',compact('admin'));
     }
 
 
