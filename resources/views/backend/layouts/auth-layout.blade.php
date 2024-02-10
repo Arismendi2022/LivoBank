@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="/backend/dist/css/adminlte.min.css">
   <!-- botstrap 5 css -->
   <link rel="stylesheet" href="/backend/assets/css/bootstrap.min.css">
+  <!-- toastr CSS -->
+  <link rel="stylesheet" href="/backend/plugins/toastr/toastr.min.css">
+
   @livewireStyles
 </head>
 
@@ -44,6 +47,22 @@
       history.pushState(null, null, document.URL);
     });
   }
+</script>
+
+<!-- ijabo Crop -->
+<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
+<!-- toastr -->
+<script src="/backend/plugins/toastr/toastr.min.js"></script>
+
+<script>
+  window.addEventListener('showToastr', function (event) {
+    toastr.remove();
+    if (event.detail.type === 'info'){ toastr.info(event.detail.message);
+    } else if ( event.detail.type === 'success') { toastr.success(event.detail.message);
+    } else if ( event.detail.type === 'error') {toastr.error(event.detail.message);
+    } else if ( event.detail.type === 'warning') { toastr.warning(event.detail.message);
+    } else { return false; }
+  });
 </script>
 @livewireScripts
 

@@ -17,8 +17,8 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Nombre completo</label>
-                  <input type="text" class="form-control" wire:model="name" placeholder="Ingrese nombre completo">
-                  @error('name')
+                  <input type="text" class="form-control" wire:model="fullname" placeholder="Ingrese nombre completo">
+                  @error('fullname')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>

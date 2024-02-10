@@ -12,7 +12,7 @@ class AdminSellerHeaderProfileInfo extends Component
   public $seller;
 
   public $listeners = [
-    'UpdateAdminSellertHeaderInfo'=>'$refresh'
+    'updateAdminSellerHeaderInfo'=>'$refresh'
 
   ];
 

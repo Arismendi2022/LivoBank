@@ -20,7 +20,7 @@
      * @var array<int, string>
      */
     protected $fillable = [
-      'fulname',
+      'fullname',
       'username',
       'email',
       'password',
