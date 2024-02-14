@@ -39,6 +39,10 @@
 <script src="/backend/assets/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/backend/dist/js/adminlte.min.js"></script>
+<!-- ijabo Crop -->
+<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
+<!-- toastr -->
+<script src="/backend/plugins/toastr/toastr.min.js"></script>
 
 <script>
   if (navigator.userAgent.indexOf("Firefox") != -1) {
@@ -49,21 +53,6 @@
   }
 </script>
 
-<!-- ijabo Crop -->
-<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
-<!-- toastr -->
-<script src="/backend/plugins/toastr/toastr.min.js"></script>
-
-<script>
-  window.addEventListener('showToastr', function (event) {
-    toastr.remove();
-    if (event.detail.type === 'info'){ toastr.info(event.detail.message);
-    } else if ( event.detail.type === 'success') { toastr.success(event.detail.message);
-    } else if ( event.detail.type === 'error') {toastr.error(event.detail.message);
-    } else if ( event.detail.type === 'warning') { toastr.warning(event.detail.message);
-    } else { return false; }
-  });
-</script>
 @livewireScripts
 
 </body>

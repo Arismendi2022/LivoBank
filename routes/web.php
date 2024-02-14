@@ -34,6 +34,7 @@
       Route::view('/home','backend.pages.admin.home')->name('home');
       Route::post('/logout_handler', [Admincontroller::class,'logoutHandler'])->name('logout_handler');
       Route::get('/profile', [Admincontroller::class,'profileView'])->name('profile');
+      Route::post('/change-profile-picture', [Admincontroller::class,'changeProfilePicture'])->name('change-profile-picture');
 
     });
 

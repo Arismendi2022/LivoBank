@@ -35,7 +35,10 @@
             </div>
             <div class="card-footer">
               <div class="text-center">
-                <a href="" class="edit-avatar"><i class="fa-solid fa-camera text-dark fs-5"></i></a>
+                <a href="javascript:;" onclick="event.preventDefault();document.getElementById('adminProfilePictureFile').click();"
+                   class="edit-avatar"><i class="fa-solid fa-camera"></i></a>
+                <input type="file" name="adminProfilePictureFile" id="adminProfilePictureFile"
+                       class="d-none" style="opacity:0">
               </div>
               <div class="row py-2">
                 <h3 class="widget-user-desc text-center" id="adminProfileName">{{ $admin->fullname }}</h3>
@@ -50,9 +53,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-8">
-
           @livewire('admin-profile-tabs')
-
         </div>
         <!-- /.card -->
       </div>
@@ -66,9 +67,26 @@
 @push('scripts')
   <script>
     window.addEventListener('updateAdminInfo', function (event) {
-      $('#adminProfileName').html(event.detail.adminName);
-      $('#adminProfileEmail').html(event.detail.adminEmail);
-
+      $('#adminProfileName').html(event.detail[0]['adminName']);
+      $('#adminProfileEmail').html(event.detail[0]['adminEmail']);
     });
+
+    $('input[type="file"][name="adminProfilePictureFile"][id="adminProfilePictureFile"]').ijaboCropTool({
+      preview : '#adminProfilePicture',
+      setRatio:1,
+      allowedExtensions: ['jpg', 'jpeg','png'],
+      buttonsText:['CROP','QUIT'],
+      buttonsColor:['#30bf7d','#ee5155', -15],
+      processUrl:'{{ route("admin.change-profile-picture") }}',
+      withCSRF:['_token','{{ csrf_token() }}'],
+      onSuccess:function(message, element, status){
+        Livewire.dispatch('updateAdminSellerHeaderInfo');
+        toastr.success(message)
+      },
+      onError:function(message, element, status){
+        toastr.error(message);
+      }
+    });
+
   </script>
 @endpush

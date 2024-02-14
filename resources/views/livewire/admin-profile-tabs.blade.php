@@ -17,7 +17,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Nombre completo</label>
-                  <input type="text" class="form-control" wire:model="fullname" placeholder="Ingrese nombre completo">
+                  <input type="text" class="form-control" wire:model="fullname" placeholder="Ingrese nombre completo" autofocus>
                   @error('fullname')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -51,8 +51,43 @@
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane {{ $tab == 'update_password' ? 'active show' : '' }}" id="update_password">
-          Change password ...
-
+          <form wire:submit.prevent="updatePassword()">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Contraseña actual</label>
+                  <input type="password" class="form-control" wire:model.defer="current_password" placeholder="Introduce la contraseña actual" autofocus>
+                  @error('current_password')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Nueva contraseña</label>
+                  <input type="password" class="form-control" wire:model.defer="new_password" placeholder="Ingrese nueva contraseña">
+                  @error('new_password')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Confirme nueva contraseña</label>
+                  <input type="password" class="form-control" wire:model.defer="new_password_confirmation" placeholder="Confirme nueva contraseña">
+                  @error('new_password_confirmation')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+              </div>
+            </div>
+            <!-- /.row -->
+            <div class="row py-3">
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-bd-primary"><i class="fa-solid fa-circle-check mr-2"></i>Actualiza contraseña</button>
+              </div>
+            </div>
+          </form>
         </div>
         <!-- /.tab-pane -->
       </div>
@@ -60,5 +95,5 @@
     </div>
     <!-- /.tab-content -->
   </div><!-- /.card-body -->
-
 </div>
+

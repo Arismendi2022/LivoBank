@@ -4,13 +4,15 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('pageTitle')</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/backend/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
@@ -25,6 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/backend/dist/css/style.css">
   @livewireStyles
 </head>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -57,6 +60,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/backend/assets/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/backend/dist/js/adminlte.min.js"></script>
+<!-- ijabo Crop -->
+<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
+<!-- toastr -->
+<script src="/backend/plugins/toastr/toastr.min.js"></script>
+{{-- sweetalert2 --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
   if (navigator.userAgent.indexOf("Firefox") != -1) {
@@ -67,19 +76,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
   }
 </script>
 
-<!-- ijabo Crop -->
-<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
-<!-- toastr -->
-<script src="/backend/plugins/toastr/toastr.min.js"></script>
-
 <script>
   window.addEventListener('showToastr', function (event) {
     toastr.remove();
-    if (event.detail.type === 'info'){ toastr.info(event.detail.message);
-    } else if ( event.detail.type === 'success') { toastr.success(event.detail.message);
-    } else if ( event.detail.type === 'error') {toastr.error(event.detail.message);
-    } else if ( event.detail.type === 'warning') { toastr.warning(event.detail.message);
-    } else { return false; }
+
+    if (event.detail[0]['type'] === 'info') {toastr.info(event.detail[0]['message']);
+    } else if (event.detail[0]['type'] === 'success') {toastr.success(event.detail[0]['message']);
+    } else if (event.detail[0]['type'] === 'error') {toastr.error(event.detail[0]['message']);
+    } else if (event.detail[0]['type'] === 'warning') {toastr.warning(event.detail[0]['message']);
+    } else {
+      return false;
+    }
+
   });
 </script>
 
@@ -88,4 +96,3 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </body>
 </html>
-
