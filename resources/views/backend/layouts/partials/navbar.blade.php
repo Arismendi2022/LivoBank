@@ -21,7 +21,7 @@
           <i class="fa-regular fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#"><i class="fa fa-cog mr-2"></i>Ajustes</a>
+          <a class="dropdown-item" href="{{ route('admin.settings') }}"><i class="fa fa-cog mr-2"></i>Ajustes</a>
           <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="fa fa-user mr-2"></i>Perfil</a>
           <a class="dropdown-item" href="{{ route('admin.logout_handler') }}" onclick="event.preventDefault();document.getElementById('adminLogoutForm').submit()"><i
               class="fa fa-sign-out mr-2"></i>Cerrar Sesión</a>

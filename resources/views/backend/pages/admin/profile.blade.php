@@ -17,6 +17,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+  <!-- /.content-header -->
 
   <!-- Main content -->
   <section class="content">
@@ -61,14 +62,14 @@
     </div><!-- /.container-fluid -->
   </section>
   <!-- /.content -->
-  <!-- /.content-header -->
 @endsection
 
 @push('scripts')
   <script>
     window.addEventListener('updateAdminInfo', function (event) {
-      $('#adminProfileName').html(event.detail[0]['adminName']);
-      $('#adminProfileEmail').html(event.detail[0]['adminEmail']);
+      const data = event.detail
+      $('#adminProfileName').html(data[0]['adminName']);
+      $('#adminProfileEmail').html(data[0]['adminEmail']);
     });
 
     $('input[type="file"][name="adminProfilePictureFile"][id="adminProfilePictureFile"]').ijaboCropTool({

@@ -8,6 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/site/{{ get_settings()->site_favicon }}">
   <title>@yield('pageTitle')</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -21,10 +22,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/backend/assets/css/bootstrap.min.css">
   <!-- ijabo Crop -->
   <link rel="stylesheet" href="/extra-assets/ijaboCropTool/ijaboCropTool.min.css">
-  <!-- toastr CSS -->
-  <link rel="stylesheet" href="/backend/plugins/toastr/toastr.min.css">
+  <!-- ijabo CSS -->
+  <link rel="stylesheet" href="/backend/plugins/ijabo/ijabo.min.css">
   <!-- style CSS -->
   <link rel="stylesheet" href="/backend/dist/css/style.css">
+
   @livewireStyles
 </head>
 
@@ -62,10 +64,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/backend/dist/js/adminlte.min.js"></script>
 <!-- ijabo Crop -->
 <script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
-<!-- toastr -->
-<script src="/backend/plugins/toastr/toastr.min.js"></script>
+<!-- ijabo -->
+<script src="/backend/plugins/ijabo/ijabo.min.js"></script>
+<script src="/backend/plugins/ijabo/jquery.ijaboViewer.min.js"></script>
 {{-- sweetalert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@livewireScripts
+@stack('scripts')
 
 <script>
   if (navigator.userAgent.indexOf("Firefox") != -1) {
@@ -79,20 +85,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
   window.addEventListener('showToastr', function (event) {
     toastr.remove();
+    const data = event.detail
 
-    if (event.detail[0]['type'] === 'info') {toastr.info(event.detail[0]['message']);
-    } else if (event.detail[0]['type'] === 'success') {toastr.success(event.detail[0]['message']);
-    } else if (event.detail[0]['type'] === 'error') {toastr.error(event.detail[0]['message']);
-    } else if (event.detail[0]['type'] === 'warning') {toastr.warning(event.detail[0]['message']);
+    if (data[0]['type'] === 'info') {
+      toastr.info(data[0]['message']);
+    } else if (data[0]['type'] === 'success') {
+      toastr.success(data[0]['message']);
+    } else if (data[0]['type'] === 'error') {
+      toastr.error(data[0]['message']);
+    } else if (data[0]['type'] === 'warning') {
+      toastr.warning(data[0]['message']);
     } else {
       return false;
     }
 
   });
 </script>
-
-@livewireScripts
-@stack('scripts')
 
 </body>
 </html>

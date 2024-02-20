@@ -3,7 +3,8 @@
   <!-- Brand Logo -->
   <div class="brand-link">
     <img src="/backend/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-bold"><b class="ml-2"><i>{{config('app.name')}}</i></b></span>
+    <img src="/images/site/{{ get_settings()->site_logo }}" alt="AdminLTE Logo" class="brand-link elevation-3" style="width: 70%;">
+    {{--<span class="brand-text font-weight-bold"><b class="ml-2"><i>{{config('app.name')}}</i></b></span>--}}
   </div>
 
   <!-- Sidebar -->
@@ -22,6 +23,14 @@
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.clientes') }}" class="nav-link">
+            <i class="nav-icon fa-solid fa-users"></i>
+            <p>
+              Clientes
             </p>
           </a>
         </li>

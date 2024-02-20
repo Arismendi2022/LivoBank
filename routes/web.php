@@ -32,9 +32,14 @@
 
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
       Route::view('/home','backend.pages.admin.home')->name('home');
-      Route::post('/logout_handler', [Admincontroller::class,'logoutHandler'])->name('logout_handler');
-      Route::get('/profile', [Admincontroller::class,'profileView'])->name('profile');
-      Route::post('/change-profile-picture', [Admincontroller::class,'changeProfilePicture'])->name('change-profile-picture');
+      Route::post('/logout_handler', [AdminController::class,'logoutHandler'])->name('logout_handler');
+      Route::get('/profile', [AdminController::class,'profileView'])->name('profile');
+      Route::post('/change-profile-picture', [AdminController::class,'changeProfilePicture'])->name('change-profile-picture');
+      Route::view('/settings', 'backend.pages.settings')->name('settings');
+      Route::post('/change-logo', [AdminController::class,'changeLogo'])->name('change-logo');
+      Route::post('/change-favicon', [AdminController::class,'changeFavicon'])->name('change-favicon');
+
+      Route::view('/clientes', 'backend.pages.clientes')->name('clientes');
 
     });
 

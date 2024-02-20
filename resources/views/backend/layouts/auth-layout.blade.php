@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/site/{{ get_settings()->site_favicon }}">
   <title>@yield('pageTitle')</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -17,8 +18,8 @@
   <link rel="stylesheet" href="/backend/dist/css/adminlte.min.css">
   <!-- botstrap 5 css -->
   <link rel="stylesheet" href="/backend/assets/css/bootstrap.min.css">
-  <!-- toastr CSS -->
-  <link rel="stylesheet" href="/backend/plugins/toastr/toastr.min.css">
+  <!-- ijabo CSS -->
+  <link rel="stylesheet" href="/backend/plugins/ijabo/ijabo.min.css">
 
   @livewireStyles
 </head>
@@ -41,8 +42,8 @@
 <script src="/backend/dist/js/adminlte.min.js"></script>
 <!-- ijabo Crop -->
 <script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
-<!-- toastr -->
-<script src="/backend/plugins/toastr/toastr.min.js"></script>
+<!-- ijabo -->
+<script src="/backend/plugins/ijabo/ijabo.min.js"></script>
 
 <script>
   if (navigator.userAgent.indexOf("Firefox") != -1) {
