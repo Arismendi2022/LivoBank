@@ -5,17 +5,16 @@
   use Illuminate\Database\Eloquent\Factories\HasFactory;
   use Illuminate\Database\Eloquent\Model;
 
-  class GeneralSetting extends Model
+  class SocialNetwork extends Model
   {
     use HasFactory;
 
     protected $fillable = [
-      'site_name',
-      'site_email',
-      'site_phone',
-      'site_meta_keywords',
-      'site_meta_description',
-      'site_address'
+      'facebook_url',
+      'twitter_url',
+      'instagram_url',
+      'youtube_url',
+      'github_url',
+      'linkedin_url'
     ];
-
   }

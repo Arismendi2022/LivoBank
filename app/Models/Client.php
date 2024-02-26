@@ -20,16 +20,16 @@
      * @var array<int, string>
      */
     protected $fillable = [
-      'name',
-      'username',
-      'email',
-      'password',
-      'picture',
+      'identification',
+      'first_name',
+      'last_name',
+      'gender',
       'address',
       'phone',
-      'email_verified_at',
+      'email',
+      'picture',
       'status',
-      'loan_status'
+      'deleted_at'
     ];
 
     /**

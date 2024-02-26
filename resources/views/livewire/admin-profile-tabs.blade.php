@@ -84,7 +84,7 @@
             <!-- /.row -->
             <div class="row py-3">
               <div class="col-md-6">
-                <button type="submit" class="btn btn-bd-primary"><i class="fa-solid fa-circle-check mr-2"></i>Actualiza contraseña</button>
+                <button type="submit" class="btn btn-bd-primary"><i class="fa-solid fa-circle-check mr-2"></i>Actualizar contraseña</button>
               </div>
             </div>
           </form>

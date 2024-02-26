@@ -26,6 +26,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/backend/plugins/ijabo/ijabo.min.css">
   <!-- style CSS -->
   <link rel="stylesheet" href="/backend/dist/css/style.css">
+  <!-- Datatables CSS -->
+  <link rel="stylesheet" href="/backend/plugins/DataTables/datatables.min.css">
 
   @livewireStyles
 </head>
@@ -69,6 +71,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/backend/plugins/ijabo/jquery.ijaboViewer.min.js"></script>
 {{-- sweetalert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Datatables JS -->
+<script src="/backend/plugins/DataTables/datatables.min.js"></script>
 
 @livewireScripts
 @stack('scripts')

@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100)->nullable();
-            $table->string('username',30)->unique()->nullable();
-            $table->string('email',50)->unique();
-            $table->string('password')->nullable();
-            $table->string('picture')->nullable();
+            $table->string('identification',15);
+            $table->string('first_name',50)->nullable();
+            $table->string('last_name',50)->nullable();
+            $table->string('gender',15)->nullable();
             $table->string('address',100)->nullable();
             $table->string('phone',15)->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email',50)->unique();
+            $table->string('picture')->nullable();
+            $table->enum('status',['activo','inactivo'])->default('activo');
             $table->timestamps();
-            $table->tinyInteger('status')->default(0);
-            $table->tinyInteger('loan_status')->default(0);
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

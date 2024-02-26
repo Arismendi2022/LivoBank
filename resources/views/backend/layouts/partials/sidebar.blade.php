@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <div class="brand-link">
-    <img src="/backend/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <img src="/images/site/{{ get_settings()->site_logo }}" alt="AdminLTE Logo" class="brand-link elevation-3" style="width: 70%;">
+    <img src="/images/site/{{ get_settings()->site_favicon}}" alt="" class="brand-image img-circle elevation-3" style="border: 1px solid darkgrey">
+    <img src="/images/site/{{ get_settings()->site_logo }}" alt="" class="brand-link elevation-3" style="width: 70%;">
     {{--<span class="brand-text font-weight-bold"><b class="ml-2"><i>{{config('app.name')}}</i></b></span>--}}
   </div>
 
@@ -27,10 +27,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.clientes') }}" class="nav-link">
+          <a href="{{ route('admin.manage-clients.clients-list') }}" class="nav-link">
             <i class="nav-icon fa-solid fa-users"></i>
             <p>
               Clientes
+              <span class="right badge badge-danger">New</span>
             </p>
           </a>
         </li>
@@ -85,7 +86,7 @@
             <i class="nav-icon fas fa-th"></i>
             <p>
               Simple Link
-              <span class="right badge badge-danger">New</span>
+              <span class="right badge badge-primary">New</span>
             </p>
           </a>
         </li>

@@ -80,6 +80,17 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Dirección del sitio</label>
+                    <input type="text" class="form-control"
+                           wire:model.defer="site_address"
+                           placeholder="Ingrese dirección del sitio">
+                    @error('site_address')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                  </div>
+                </div>
                 <div class="form-group">
                   <label for="">Descripción meta del sitio</label>
                   <textarea id="" cols="4" rows="4" placeholder="Descripción meta del sitio" class="form-control"
@@ -143,7 +154,59 @@
 
             <div class="tab-pane fade {{ $tab == 'social_networks' ? 'active show' : '' }}"
                  id="social_networks" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
-              ---Social networks ---
+              <form wire:submit.prevent="updateSocialNetworks()">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">URL Facebook</label>
+                      <input type="text" class="form-control" wire:model.defer="facebook_url" placeholder="Ingrese URL de Facebook" autofocus>
+                      @error('facebook_url'){{ $message }} @enderror
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">URL Twitter</label>
+                      <input type="text" class="form-control" wire:model.defer="twitter_url" placeholder="Ingrese URL de Twitter">
+                      @error('twitter_url'){{ $message }} @enderror
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">URL Instagram</label>
+                      <input type="text" class="form-control" wire:model.defer="instagram_url" placeholder="Ingrese URL de Instagram">
+                      @error('instagram_url'){{ $message }} @enderror
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">URL YouTube</label>
+                      <input type="text" class="form-control" wire:model.defer="youtube_url" placeholder="Ingrese URL de YouTube" autofocus>
+                      @error('youtube_url'){{ $message }} @enderror
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">URL GitHub</label>
+                      <input type="text" class="form-control" wire:model.defer="github_url" placeholder="Ingrese URL de GitHub">
+                      @error('github_url'){{ $message }} @enderror
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">URL Linkedin</label>
+                      <input type="text" class="form-control" wire:model.defer="linkedin_url" placeholder="Ingrese URL de Linkedin">
+                      @error('linkedin_url'){{ $message }} @enderror
+                    </div>
+                  </div>
+                </div>
+                <div class="row py-3">
+                  <div class="col-md-6">
+                    <button type="submit" class="btn btn-bd-primary"><i class="fa-solid fa-circle-check mr-2"></i>Guardar cambios</button>
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="tab-pane fade {{ $tab == 'payment_methods' ? 'active show' : '' }}"
                  id="payment_methods" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
