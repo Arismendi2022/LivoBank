@@ -11,7 +11,6 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     {{--<livewire:admin-seller-header-profile-info>--}}
-    @livewire('admin-seller-header-profile-info')
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -27,7 +26,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.manage-clients.clients-list') }}" class="nav-link">
+          <a href="{{ route('client.client-list') }}" class="nav-link">
             <i class="nav-icon fa-solid fa-users"></i>
             <p>
               Clientes

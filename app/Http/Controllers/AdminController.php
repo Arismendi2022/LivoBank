@@ -124,6 +124,9 @@
         'mail_body'            => $mail_body
       );
 
+      dd($mailConfig);
+      exit;
+
       if(sendEmail($mailConfig)){
         session()->flash('success','Le enviamos por correo el enlace para restablecer su contraseña.');
         return redirect()->route('admin.forgot-password');
@@ -143,8 +146,6 @@
         /** Check if token is not expire */
         $diffMins = Carbon::createFromFormat('Y-m-d H:i:s',$check_token->created_at)->diffInMinutes(Carbon::now());
         //$diffMins = DB::select("SELECT DATEDIFF(MINUTE, GETDATE(), ?) AS diffMins",[$check_token->created_at])[0]->diffMins;
-
-        //d($diffMins);
 
         if($diffMins > constDefaults::tokenExpiredMinutes){
           /** token expired */
@@ -227,14 +228,14 @@
       $path        = 'images/users/admins/';
       $file        = $request->file('adminProfilePictureFile');
       $old_picture = $admin->getAttributes()['picture'];
-      $file_path   = $path . $old_picture;
-      $filename    = 'ADMIN_IMG_' . rand(2,1000) . $admin->id . time() . uniqid() . '.jpg';
+      $file_path   = $path.$old_picture;
+      $filename    = 'ADMIN_IMG_'.rand(2,1000).$admin->id.time().uniqid().'.jpg';
 
       $upload = $file->move(public_path($path),$filename);
 
       if($upload){
-        if($old_picture != null && File::exists(public_path($path . $old_picture))){
-          File::delete(public_path($path . $old_picture));
+        if($old_picture != null && File::exists(public_path($path.$old_picture))){
+          File::delete(public_path($path.$old_picture));
         }
         $admin->update(['picture' => $filename]);
         return response()->json(['status' => 1,'msg' => 'Tu foto de perfil se ha actualizado correctamente.']);
@@ -249,14 +250,14 @@
       $file      = $request->file('site_logo');
       $settings  = new GeneralSetting();
       $old_logo  = $settings->first()->site_logo;
-      $file_path = $path . $old_logo;
-      $filename  = 'LOGO_' . uniqid() . '.' . $file->getClientOriginalExtension();
+      $file_path = $path.$old_logo;
+      $filename  = 'LOGO_'.uniqid().'.'.$file->getClientOriginalExtension();
 
       $upload = $file->move(public_path($path),$filename);
 
       if($upload){
-        if($old_logo != null && File::exists(public_path($path . $old_logo))){
-          File::delete(public_path($path . $old_logo));
+        if($old_logo != null && File::exists(public_path($path.$old_logo))){
+          File::delete(public_path($path.$old_logo));
         }
         $settings            = $settings->first();
         $settings->site_logo = $filename;
@@ -269,18 +270,18 @@
     }
 
     public function changeFavicon(Request $request){
-      $path      = 'images/site/';
-      $file      = $request->file('site_favicon');
-      $settings  = new GeneralSetting();
-      $old_favicon  = $settings->first()->site_favicon;
-      $file_path = $path . $old_favicon;
-      $filename  = 'FAV_' . uniqid() . '.' . $file->getClientOriginalExtension();
+      $path        = 'images/site/';
+      $file        = $request->file('site_favicon');
+      $settings    = new GeneralSetting();
+      $old_favicon = $settings->first()->site_favicon;
+      $file_path   = $path.$old_favicon;
+      $filename    = 'FAV_'.uniqid().'.'.$file->getClientOriginalExtension();
 
       $upload = $file->move(public_path($path),$filename);
 
       if($upload){
-        if($old_favicon != null && File::exists(public_path($path . $old_favicon))){
-          File::delete(public_path($path . $old_favicon));
+        if($old_favicon != null && File::exists(public_path($path.$old_favicon))){
+          File::delete(public_path($path.$old_favicon));
         }
         $settings               = $settings->first();
         $settings->site_favicon = $filename;

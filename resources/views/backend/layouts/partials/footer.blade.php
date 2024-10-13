@@ -5,6 +5,5 @@
         Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2023-{{ date('Y') }} <a href="http://livobank.io">LivoBank.io</a>.</strong> Reservados
-    todos los derechos.
+    <strong>Copyright &copy; 2023-{{ date('Y') }} <a href="http://livobank.io">LivoBank.io</a>.</strong> Reservados todos los derechos.
 </footer>

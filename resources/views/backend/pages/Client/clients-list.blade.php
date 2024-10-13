@@ -8,7 +8,9 @@
         <div class="col-sm-6">
           <div class="input-group">
             <h1><i class="fa-solid fa-users mr-2"></i>Clientes</h1>
-            <button class="btn btn-bd-primary ml-3" type="button"><i class="fa-solid fa-circle-plus"></i> Añadir Cliente</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-bd-primary ml-3" data-bs-toggle="modal" data-bs-target="#modalClient"><i class="fa-solid fa-circle-plus mr-2"></i>Nuevo
+            </button>
           </div><!-- /.col -->
         </div>
         <div class="col-sm-6">
@@ -78,14 +80,15 @@
   </div>
   <!-- /.content -->
 
+  @include('backend.pages.Client.Modals.add-client')
+
 @endsection
 @push('scripts')
   <script>
     let table = new DataTable('#tableClients', {
-      language: {
-        url: '//cdn.datatables.net/plug-ins/2.0.0/i18n/es-ES.json',
-      },
-
+	    language: {
+		    url: '//cdn.datatables.net/plug-ins/2.0.0/i18n/es-ES.json',
+	    },
     });
   </script>
 @endpush

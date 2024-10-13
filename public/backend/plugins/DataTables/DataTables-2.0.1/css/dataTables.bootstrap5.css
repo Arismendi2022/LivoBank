@@ -1,15 +1,3 @@
-/*
- * This combined file was created by the DataTables downloader builder:
- *   https://datatables.net/download
- *
- * To rebuild or modify this file with the latest versions of the included
- * software please visit:
- *   https://datatables.net/download/#bs5/jq-3.7.0/dt-2.0.1
- *
- * Included libraries:
- *   jQuery 3 3.7.0, DataTables 2.0.1
- */
-
 @charset "UTF-8";
 :root {
   --dt-row-selected: 13, 110, 253;
@@ -497,5 +485,3 @@ div.table-responsive > div.dt-container > div.row > div[class^=col-]:last-child 
   --dt-row-stripe: 255, 255, 255;
   --dt-column-ordering: 255, 255, 255;
 }
-
-

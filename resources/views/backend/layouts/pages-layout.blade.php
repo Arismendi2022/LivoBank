@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>@yield('pageTitle')</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/backend/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
@@ -27,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- style CSS -->
   <link rel="stylesheet" href="/backend/dist/css/style.css">
   <!-- Datatables CSS -->
-  <link rel="stylesheet" href="/backend/plugins/DataTables/datatables.min.css">
+  <link rel="stylesheet" href="/backend/plugins/DataTables/DataTables-2.0.1/css/dataTables.bootstrap5.css">
 
   @livewireStyles
 </head>
@@ -64,15 +58,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/backend/assets/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/backend/dist/js/adminlte.min.js"></script>
-<!-- ijabo Crop -->
-<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
-<!-- ijabo -->
-<script src="/backend/plugins/ijabo/ijabo.min.js"></script>
-<script src="/backend/plugins/ijabo/jquery.ijaboViewer.min.js"></script>
+
 {{-- sweetalert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Datatables JS -->
-<script src="/backend/plugins/DataTables/datatables.min.js"></script>
+ <script src="/backend/plugins/DataTables/jQuery-3.7.1/jquery-3.7.1.min.js"></script>
+<script src="/backend/plugins/DataTables/DataTables-2.0.1/js/dataTables.js"></script>
+<script src="/backend/plugins/DataTables/DataTables-2.0.1/js/dataTables.bootstrap5.js"></script>
+<!-- ijabo -->
+<script src="/backend/plugins/ijabo/ijabo.min.js"></script>
+<script src="/backend/plugins/ijabo/jquery.ijaboViewer.min.js"></script>
+<!-- ijabo Crop -->
+<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
+
 
 @livewireScripts
 @stack('scripts')
@@ -91,18 +89,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     toastr.remove();
     const data = event.detail
 
-    if (data[0]['type'] === 'info') {
-      toastr.info(data[0]['message']);
-    } else if (data[0]['type'] === 'success') {
-      toastr.success(data[0]['message']);
-    } else if (data[0]['type'] === 'error') {
-      toastr.error(data[0]['message']);
-    } else if (data[0]['type'] === 'warning') {
-      toastr.warning(data[0]['message']);
-    } else {
-      return false;
-    }
-
+    if (data[0]['type'] === 'info') {toastr.info(data[0]['message']);
+    } else if (data[0]['type'] === 'success') {toastr.success(data[0]['message']);
+    } else if (data[0]['type'] === 'error') {toastr.error(data[0]['message']);
+    } else if (data[0]['type'] === 'warning') {toastr.warning(data[0]['message']);
+    } else {return false;}
   });
 </script>
 

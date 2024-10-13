@@ -32,7 +32,7 @@
                  style="background: url('/images/users/photo1.png') center center;">
             </div>
             <div class="widget-user-image">
-              <img class="img-circle" src="{{ $admin->picture }}" alt="User Avatar" id="adminProfilePicture">
+              <img class="img-circle" style="min-width: 100px;" src="{{ $admin->picture }}" alt="User Avatar" id="adminProfilePicture">
             </div>
             <div class="card-footer">
               <div class="text-center">

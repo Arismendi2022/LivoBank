@@ -2,8 +2,8 @@
 
   use Illuminate\Support\Facades\Route;
   use App\Http\Controllers\AdminController;
-  use App\Http\Controllers\Admin\ClientsController;
   use App\Models\Admin;
+  use App\Http\Controllers\Client\ClientController;
 
   /*
   |--------------------------------------------------------------------------
@@ -41,16 +41,25 @@
       Route::post('/change-logo',[AdminController::class,'changeLogo'])->name('change-logo');
       Route::post('/change-favicon',[AdminController::class,'changeFavicon'])->name('change-favicon');
 
-      /**CLIENTS MANAGEMENT */
-      Route::prefix('manage-clients')->name('manage-clients.')->group(function(){
-        Route::controller(ClientsController::class)->group(function(){
-          Route::get('/','clientsList')->name('clients-list');
-
-        });
-      });
-
     });
 
+  });
+
+  /**CLIENTS MANAGEMENT */
+  Route::prefix('client')->name('client.')->group(function(){
+
+    Route::middleware([])->group(function(){
+      Route::controller(ClientController::class)->group(function(){
+        Route::get('/clientList','clientList')->name('client-List');
+      });
+    });
+
+
+    Route::middleware([])->group(function(){
+      Route::controller(ClientController::class)->group(function(){
+        Route::get('/','client')->name('client');
+      });
+    });
 
   });
 

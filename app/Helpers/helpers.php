@@ -33,7 +33,6 @@
       }else{
         return false;
       }
-
     }
   }
 
@@ -49,7 +48,7 @@
       }else{
         $settings->insert([
           'site_name'  => 'LivoBank',
-          'site_email' => 'info@livoBank.io'
+          'site_email' => 'info@livoBank.co'
         ]);
         $new_settings_data = $settings->first();
         $results           = $new_settings_data;
